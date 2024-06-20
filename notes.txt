@@ -1,0 +1,8 @@
+// create a react app for a MERN project 
+npx create-react-app app_name
+
+// Remove default content from App.js and index.html
+// and empty app.css and index.css
+
+// Install Tailwind CSS 
+ *IMP* Get started --> framwork guides --> create react app --> follow the step and just relace the content with the existing files
