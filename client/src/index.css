@@ -36,3 +36,54 @@ i:hover {
     color: #fff; 
     font-size: larger; 
 }
+
+
+/* Loader Animation */
+
+.a{
+  animation: a 1s linear infinite;
+}
+
+@keyframes a {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.k{
+  animation: k 1s linear infinite;
+}
+
+@keyframes k {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.o{
+  animation: o 1s linear infinite;
+}
+
+@keyframes o {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
