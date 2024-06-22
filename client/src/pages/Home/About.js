@@ -9,8 +9,8 @@ export default function About() {
     return (
         <div className='md:pt-20'>
             <SectionTitle title='About Me' />
-            <div className='flex flex-col md:flex-row md:items-center md:gap-10 sm:flex-col sm:items-center sm:gap-5'>
-                <div className='h-[70vh] md:w-1/2 sm:w-full'>
+            <div className='flex flex-col lg:gap-10 md:flex-row md:items-center md:gap-10 sm:flex-col sm:items-center sm:gap-5'>
+                <div className=' md:w-1/2 sm:w-full'>
                     <dotlottie-player
                         src="https://lottie.host/f2740668-e051-4b8e-b837-4013eb1812ac/F7CNJBaRTF.json"
                         background="transparent"

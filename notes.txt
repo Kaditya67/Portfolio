@@ -5,4 +5,15 @@ npx create-react-app app_name
 // and empty app.css and index.css
 
 // Install Tailwind CSS 
- *IMP* Get started --> framwork guides --> create react app --> follow the step and just relace the content with the existing files
+ *IMP* Get started --> framwork guides --> create react app --> follow the step and just relace the content 
+ with the existing files
+
+
+
+// Install react-router-dom for navigation 
+npm i react-router-dom
+
+
+// create two folders   -> pages and components
+
+
