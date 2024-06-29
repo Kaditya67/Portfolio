@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import SectionTitle from './SectionTitle';
-import { projects } from '../../resources/projects';
+import { useSelector } from 'react-redux';
 
 function Project() {
-    const [selectedItem, setSelectedItem] = useState(projects[0]._id);
+    const { portfolioData } = useSelector(state => state.root || {});
+    const projects = portfolioData?.project || [];
+    const [selectedItem, setSelectedItem] = useState(projects.length > 0 ? projects[0]._id : null);
     const selectedProject = projects.find(project => project._id === selectedItem);
 
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -37,9 +39,9 @@ function Project() {
                                 {!imageLoaded && (
                                     <div className='w-full h-auto max-h-60 bg-gray-300 animate-pulse'></div>
                                 )}
-                                <img 
-                                    src={selectedProject.image} 
-                                    alt={selectedProject.title} 
+                                <img
+                                    src={selectedProject.image}
+                                    alt={selectedProject.title}
                                     className={`w-full h-auto max-h-60 ${imageLoaded ? 'block' : 'hidden'}`}
                                     onLoad={() => setImageLoaded(true)}
                                     style={{ width: '100%', height: 'auto', maxHeight: '240px' }}

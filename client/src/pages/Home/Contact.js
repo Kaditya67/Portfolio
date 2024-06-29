@@ -1,15 +1,14 @@
 import React from 'react';
 import SectionTitle from './SectionTitle';
+import { useSelector } from 'react-redux';
 
 function Contact() {
-    const user = {
-        name: "Aditya",
-        gender: "male",
-        age: 21,
-        mobile: 1234567890,
-        email: "a@a.com",
-        country: "India",
-    };
+    
+    const { portfolioData } = useSelector(state => state.root || {});
+    const { contact } = portfolioData;
+    
+    // Function to filter out 'id' key
+    const filterIdKey = (key) => key !== '_id';
 
     return (
         <div>
@@ -18,12 +17,14 @@ function Contact() {
                 <div className='flex flex-col gap-1 lg:py-20 md:py-20'>
                     <h1 className='text-white'>{'{'}</h1>
                     <div className='ml-5'>
-                        {Object.keys(user).map((key) => (
-                            <h1 key={key}>
-                                <span className='text-tertiary'>{`${key}: `}</span>
-                                <span className='text-tertiary'>{user[key]}</span>
-                            </h1>
-                        ))}
+                        {Object.keys(contact)
+                            .filter(filterIdKey) // Filter out 'id' key
+                            .map((key) => (
+                                <h1 key={key}>
+                                    <span className='text-tertiary'>{`${key}: `}</span>
+                                    <span className='text-white'>{contact[key]}</span>
+                                </h1>
+                            ))}
                     </div>
                     <h1 className='text-white'>{'}'}</h1>
                 </div>

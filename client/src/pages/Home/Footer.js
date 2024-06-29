@@ -9,7 +9,7 @@ export default function Footer() {
           Design & Developed by
         </h1>
         <h1 className='text-white'>
-          <span className='text-tertiary'> © 2022 Aditya Ojha. All rights reserved.</span>
+          <span className='text-tertiary'> © 2024 Aditya Ojha. All rights reserved.</span>
         </h1>
       </div>
     </div>
