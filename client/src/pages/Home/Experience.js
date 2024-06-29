@@ -12,7 +12,7 @@ function Experience() {
         <div className=''>
             <SectionTitle title='Experience' />
             <div className='flex flex-col py-10 lg:flex-row lg:gap-10'>
-                {/* For small screens: horizontal scroll, for large screens: vertical sidebar */}
+                
                 <div className='flex overflow-x-auto lg:overflow-auto lg:flex-col gap-5 border-b-2 lg:border-b-0 lg:border-l-2 border-[#135e4c82] pb-5 lg:pb-0 lg:w-1/3'>
                     {experiences.map((experience) => (
                         <div 

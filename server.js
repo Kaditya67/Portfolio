@@ -7,12 +7,11 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 const portfolioRoute = require('./routes/portfolioRoute');
-app.use(express.json());
-
-app.use('/api/portfolio', portfolioRoute);
+app.use(express.json());    // Middleware to parse JSON payloads
 
 
-app.listen(port, () => {
+app.use('/api/portfolio', portfolioRoute);  // Actual route of the portfolio
+
+app.listen(port, () => {    // Starts the server with that port
   console.log(`Server is running on port ${port}`);
 });
-
