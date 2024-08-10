@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import SectionTitle from './SectionTitle';
 import { experiences } from '../../resources/experiences';
-// import './styles.css'; // Ensure to import your CSS file
 
 function Experience() {
     // Initialize selectedItem with the ID of the latest experience (assuming the first item is the latest)
@@ -9,18 +8,22 @@ function Experience() {
     const selectedExperience = experiences.find(experience => experience._id === selectedItem);
 
     return (
-        <div className=''>
+        <div className='experience-container'>
             <SectionTitle title='Experience' />
-            <div className='flex flex-col py-10 lg:flex-row lg:gap-10'>
+            <div className='experience-content flex flex-col py-10 lg:flex-row lg:gap-10'>
                 {/* For small screens: horizontal scroll, for large screens: vertical sidebar */}
-                <div className='flex overflow-x-auto lg:overflow-auto lg:flex-col gap-5 border-b-2 lg:border-b-0 lg:border-l-2 border-[#135e4c82] pb-5 lg:pb-0 lg:w-1/3'>
+                <div className='flex overflow-x-auto lg:overflow-auto lg:flex-col gap-5 border-b-2 lg:border-b-0 lg:border-l-2 border-[#135e4c82] pb-5 lg:pb-0 lg:w-[300px] lg:flex-none'>
                     {experiences.map((experience) => (
                         <div 
                             key={experience._id} 
                             onClick={() => setSelectedItem(experience._id)} 
-                            className='cursor-pointer flex-shrink-0 lg:flex-shrink'
+                            className={`cursor-pointer ${selectedItem === experience._id ? 'text-tertiary lg:border-l-4 border-b-4 lg:border-b-0 border-tertiary -mb-[3px] lg:mb-0 lg:-ml-[3px] bg-[#1a7f5a5f] py-3' : 'text-white'}`}
+                            role="button"
+                            aria-pressed={selectedItem === experience._id}
+                            tabIndex={0}
+                            onKeyPress={() => setSelectedItem(experience._id)}
                         >
-                            <h1 className={`px-5 ${selectedItem === experience._id ? 'text-tertiary lg:border-l-4 border-b-4 lg:border-b-0 border-tertiary -mb-[3px] lg:mb-0 lg:-ml-[3px] bg-[#1a7f5a5f] py-3' : 'text-white'}`}>
+                            <h1 className='px-5'>
                                 {experience.period}
                             </h1>
                         </div>

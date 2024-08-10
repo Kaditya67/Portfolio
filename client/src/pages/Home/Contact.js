@@ -6,8 +6,8 @@ function Contact() {
         name: "Aditya",
         gender: "male",
         age: 21,
-        mobile: 1234567890,
-        email: "a@a.com",
+        mobile: "+917033529453",
+        email: "ojhaaditya913@gmail.com",
         country: "India",
     };
 
@@ -21,7 +21,7 @@ function Contact() {
                         {Object.keys(user).map((key) => (
                             <h1 key={key}>
                                 <span className='text-tertiary'>{`${key}: `}</span>
-                                <span className='text-tertiary'>{user[key]}</span>
+                                <span className='text-white'>{user[key]}</span>
                             </h1>
                         ))}
                     </div>
