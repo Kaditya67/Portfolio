@@ -17,3 +17,28 @@ npm i react-router-dom
 // create two folders   -> pages and components
 
 
+##############################################################################################################
+// 2nd part
+
+npm init ---> to get the package.json so that use ca setup MERN
+
+// install some modules
+npm i express mongoose dotenv
+
+express--> backend routing
+mongoose ---> mongo db
+
+
+npm i nodemon  ---> for restarting server whenever there is a change
+
+
+// Create server.js file
+make routing using express here.
+
+
+// create dbConfig.js
+connect mongodb here and establish connection
+
+
+//install for api call and state management 
+npm i redux react-redux axios @reduxjs/toolkit

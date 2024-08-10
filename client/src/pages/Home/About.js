@@ -1,10 +1,15 @@
 import React from 'react';
 import SectionTitle from './SectionTitle';
+import { useSelector } from 'react-redux';
 
 export default function About() {
-    const skills = [
-        'ReactJS', 'NodeJS', 'ExpressJS', 'MongoDB', 'JavaScript', 'Python', 'HTML', 'CSS',
-    ];
+    // const skills = [
+    //     'ReactJS', 'NodeJS', 'ExpressJS', 'MongoDB', 'JavaScript', 'Python', 'HTML', 'CSS',
+    // ];
+
+  const { loading, portfolioData } = useSelector(state => state.root || {});
+  const {about}=portfolioData;
+  const {lottieUrl,description1,description2,skills}=about;
 
     return (
         <div className='md:pt-20'>
@@ -12,7 +17,7 @@ export default function About() {
             <div className='flex flex-col lg:gap-10 md:flex-row md:items-center md:gap-10 sm:flex-col sm:items-center sm:gap-5'>
                 <div className=' md:w-1/2 sm:w-full'>
                     <dotlottie-player
-                        src="https://lottie.host/f2740668-e051-4b8e-b837-4013eb1812ac/F7CNJBaRTF.json"
+                        src={lottieUrl}
                         background="transparent"
                         speed="1"
                         style={{ width: 300, height: 300 }}
@@ -20,14 +25,10 @@ export default function About() {
                 </div>
                 <div className='flex flex-col gap-5 md:w-1/2 sm:w-full'>
                     <p className='text-white'>
-                        Hello, I'm Aditya, a passionate software developer with a love for coding and problem-solving.
-                        With a strong foundation in various programming languages and a keen interest in emerging technologies,
+                        {description1}
                     </p>
                     <p className='text-white'>
-                        I constantly strive to improve my skills and contribute to innovative projects.
-                        Whether it's developing web applications, exploring machine learning, or delving into open-source projects,
-                        I find joy in the process of creating and learning. Outside of coding, I enjoy reading tech blogs,
-                        participating in hackathons, and collaborating with fellow enthusiasts in the tech community.
+                        {description2}
                     </p>
                 </div>
             </div>

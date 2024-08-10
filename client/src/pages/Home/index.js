@@ -7,20 +7,25 @@ import Project from './Project';
 import Contact from './Contact';
 import Footer from './Footer';
 import LeftSider from './LeftSider';
+import { useSelector } from 'react-redux';
 
 export default function Home() {
+  const { portfolioData } = useSelector(state => state.root || {});
+
   return (
     <>
       <Header />
-      <div className='bg-primary px-8 sm:px-20 lg:px-40 xl:px-100'>
-        <Intro />
-        <About />
-        <Experience />
-        <Project />
-        <Contact />
-        <Footer />
-      </div>
-      <LeftSider />
+      {portfolioData && (
+        <div className='bg-primary px-8 sm:px-20 lg:px-40 xl:px-100'>
+          <Intro />
+          <About />
+          <Experience />
+          <Project />
+          <Contact />
+          <Footer />
+          <LeftSider />
+        </div>
+      )}
     </>
   );
 }

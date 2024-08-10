@@ -1,5 +1,6 @@
 import React from 'react';
 import SectionTitle from './SectionTitle';
+import { useSelector } from 'react-redux';
 
 function Contact() {
     const user = {

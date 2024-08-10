@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SectionTitle from './SectionTitle';
-import { projects } from '../../resources/projects';
+import { useSelector } from 'react-redux';
 
 function Project() {
-    // Initialize selectedItem with the ID of the latest project (assuming the first item is the latest)
-    const [selectedItem, setSelectedItem] = useState(projects[0]._id);
+    const { portfolioData } = useSelector(state => state.root || {});
+    const projects = portfolioData?.project || [];
+    const [selectedItem, setSelectedItem] = useState(projects.length > 0 ? projects[0]._id : null);
     const selectedProject = projects.find(project => project._id === selectedItem);
+
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    useEffect(() => {
+        setImageLoaded(false); // Reset image loaded state when selected project changes
+    }, [selectedItem]);
 
     return (
         <div className='min-h-[80vh]'>
             <SectionTitle title='Projects' />
             <div className='flex flex-col py-10 lg:flex-row lg:gap-10'>
-                {/* For small screens: horizontal scroll, for large screens: vertical sidebar */}
                 <div className='flex overflow-x-auto lg:overflow-auto lg:flex-col gap-5 border-b-2 lg:border-b-0 lg:border-l-2 border-[#135e4c82] pb-5 lg:pb-0 lg:w-1/3'>
                     {projects.map((project) => (
                         <div
@@ -30,14 +36,23 @@ function Project() {
                     {selectedProject ? (
                         <>
                             <div className='lg:w-1/2'>
-                                <img src={selectedProject.image} alt={selectedProject.title} className='w-full h-auto' />
+                                {!imageLoaded && (
+                                    <div className='w-full h-auto max-h-60 bg-gray-300 animate-pulse'></div>
+                                )}
+                                <img
+                                    src={selectedProject.image}
+                                    alt={selectedProject.title}
+                                    className={`w-full h-auto max-h-60 ${imageLoaded ? 'block' : 'hidden'}`}
+                                    onLoad={() => setImageLoaded(true)}
+                                    style={{ width: '100%', height: 'auto', maxHeight: '240px' }}
+                                />
                             </div>
                             <div className='flex flex-col gap-5 lg:w-1/2'>
                                 <h2 className='text-xl text-secondary'>{selectedProject.title}</h2>
                                 <p className='text-white'>{selectedProject.description}</p>
                                 <div className='flex flex-wrap gap-2'>
-                                    {selectedProject.technologies.map((tech, index) => (
-                                        <span key={index} className='bg-secondary text-white px-2 py-1 rounded'>
+                                    {selectedProject.technologies.map((tech) => (
+                                        <span key={tech} className='bg-secondary text-white px-2 py-1 rounded'>
                                             {tech}
                                         </span>
                                     ))}

@@ -20,4 +20,4 @@ export const experiences = [
         period: '2022 - 2023',
         description: 'Worked on JAVA and creating a desktop application which was cloning the Flight Booking System',
     },
-]
+];
