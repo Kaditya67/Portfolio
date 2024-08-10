@@ -87,3 +87,9 @@ i:hover {
     opacity: 1;
   }
 }
+
+
+.admin-input {
+  width: 70%;  
+  height: 30px;  
+}
