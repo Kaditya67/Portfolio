@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0A192F; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #013f3c7f; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #013f3c7f; 
+}
+
+i {
+    cursor: pointer;
+    transition: color 0.3s, font-size 0.3s; /* Smooth transition for color and font-size */
+}
+
+i:hover {
+    color: #fff; 
+    font-size: larger; 
+}
+
+
+/* Loader Animation */
+
+.a{
+  animation: a 1s linear infinite;
+}
+
+@keyframes a {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.k{
+  animation: k 1s linear infinite;
+}
+
+@keyframes k {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.o{
+  animation: o 1s linear infinite;
+}
+
+@keyframes o {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+.admin-input {
+  width: 70%;  
+  height: 30px;  
+}
