@@ -68,7 +68,7 @@ git clone https://github.com/Kaditya67/Portfolio.git
 cd Portfolio
 ```
 
-3. Install dependencies for the server:
+3. Install dependencies:
 
 ```sh
 cd server
