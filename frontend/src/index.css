@@ -1,0 +1,21 @@
+@import url('https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+    font-family: "Montserrat", sans-serif;
+}
+
+i {
+    cursor: pointer;
+    transition: color 0.3s, font-size 0.3s; /* Smooth transition for color and font-size */
+}
+
+i:hover {
+    color: #fff; 
+    font-size: larger; 
+}
