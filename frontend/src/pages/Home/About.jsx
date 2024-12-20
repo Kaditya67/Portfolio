@@ -11,23 +11,23 @@ export default function About() {
     "dbsqlite",
   ];
   const skills = [
-    "mysql",
-    "JavaScript",
-    "TypeScript",
     "NextJS",
-    "TailwindCSS",
-    "Python",
-    "Flask",
-    "git & github",
-    "jenkins",
     "aws",
     "docker",
+    "jenkins",
+    "git & github",
+    "mysql",
     "java",
+    "JavaFx",
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "Flask",
     "C++",
     "C",
-    "JavaFx",
     "HTML",
     "CSS",
+    "TailwindCSS",
   ];
 
   return (

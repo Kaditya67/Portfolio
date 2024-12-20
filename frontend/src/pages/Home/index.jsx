@@ -10,7 +10,7 @@ import LeftSider from './LeftSider';
 import './style.css';
 
 
-export default function Home() {
+export default function Home({projects,setProjects}) {
   return (
     <>
       <Header />
@@ -18,7 +18,7 @@ export default function Home() {
         <Intro />
         <About />
         <Experience />
-        <Project />
+        <Project projects={projects} setProjects={setProjects} />
         <Contact />
         <Footer />
       </div>

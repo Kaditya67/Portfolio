@@ -12,7 +12,7 @@ function Contact() {
     };
 
     return (
-        <div>
+        <div id="contact">
             <SectionTitle title='Say Hello' />
             <div className='flex flex-col items-center justify-between lg:flex-row lg:items-start lg:gap-10 md:flex-row md:items-start md:gap-10 sm:flex-col sm:items-center sm:gap-5'>
                 <div className='flex flex-col gap-1 lg:py-20 md:py-20'>

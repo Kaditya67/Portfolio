@@ -19,9 +19,11 @@ export default function Intro() {
         contributions to the open-source community.
       </p>
 
-      <button className="border-2 border-tertiary text-tertiary px-10 py-3 rounded">
-        Contact Me
-      </button>
+      <a href="#contact">
+        <button className="border-2 border-tertiary text-tertiary px-10 py-3 rounded">
+          Contact Me
+        </button>
+        </a>
     </div>
   );
 }

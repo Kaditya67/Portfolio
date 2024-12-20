@@ -1,83 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Footer from "../Home/Footer";
-
-const projects = [
-  {
-    technologies: [],
-    _id: "1",
-    title: "Cool Pizza",
-    images: [
-      "https://sheysathya2.netlify.app/pizzas.svg",
-      "https://sheysathya2.netlify.app/pizzas.svg",
-    ],
-    description:
-      "An application that tracks the number of confirmed, recovered, and dead cases in the world. It also has an option to search for any country in the world.",
-    links: "/",
-    video: "",
-  },
-  {
-    technologies: [
-      "ReactJS",
-      "NodeJS",
-      "ExpressJS",
-      "MongoDB",
-      "JavaScript",
-      "HTML",
-      "CSS",
-    ],
-    _id: "2",
-    title: "Ecommerce",
-    images: [
-      "https://sheysathya2.netlify.app/ecommerce.svg",
-      "https://sheysathya2.netlify.app/pizzas.svg",
-    ],
-    description:
-      "An ecommerce application with features for browsing, searching, and purchasing products securely.",
-    links: "/",
-    video: "",
-  },
-  {
-    technologies: ["Python", "Flask", "SQLAlchemy", "Bootstrap"],
-    _id: "3",
-    title: "Task Manager",
-    images: [
-      "https://sheysathya2.netlify.app/taskmanager.svg",
-      "https://sheysathya2.netlify.app/ecommerce.svg",
-    ],
-    description:
-      "A task management app to organize and track tasks with deadlines and priorities.",
-    links: "/",
-    video: "",
-  },
-  {
-    technologies: ["React Native", "Firebase"],
-    _id: "4",
-    title: "Chat App",
-    images: [
-      "https://sheysathya2.netlify.app/chatapp.svg",
-      "https://sheysathya2.netlify.app/taskmanager.svg",
-    ],
-    description:
-      "A real-time chat application with support for group chats and multimedia sharing.",
-    links: "/",
-    video: "",
-  },
-];
+import { useNavigate,Link } from "react-router-dom";
 
 function ProjectDisplay() {
-  const [activeImage, setActiveImage] = useState(projects[0].images[0]);
-  const [selectedProject, setSelectedProject] = useState(projects[0]);
+  const [projects, setProjects] = useState([]);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [activeImage, setActiveImage] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  // Fetch projects from API
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await axios.get("/api/projects"); // Adjust API URL accordingly
+        setProjects(response.data);
+        setSelectedProject(response.data[0]); // Set the first project as the default
+        setActiveImage(response.data[0]?.images[0]); // Set the first image as the active image
+        setLoading(false);
+      } catch (err) {
+        setError("Error fetching projects. Please try again later.");
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
+  // Handle loading state and error
+  if (loading) {
+    return <p className="text-white">Loading projects...</p>;
+  }
+
+  if (error) {
+    return <p className="text-white">{error}</p>;
+  }
+
+  if (!projects.length) {
+    return <p className="text-white">No projects available</p>;
+  }
+
   const thumbnails = selectedProject.images;
 
   return (
-    <div className="bg-primary px-8 sm:px-20 lg:px-40 xl:px-100">
+    <div className="bg-primary px-8 sm:px-20 lg:px-40 xl:px-100 relative">
       <div className="bg-primary text-tertiary min-h-screen">
+    {/* Floating Back Button */}
+    <Link
+      to="/"
+      className="fixed bottom-8 right-8 bg-secondary text-white px-6 py-3 rounded-lg shadow-lg flex items-center justify-center hover:bg-tertiary transition-colors z-50 text-lg font-semibold"
+    >
+      Portfolio
+    </Link>
 
         {/* Projects Section */}
         <section className="bg-primary py-10 max-w-6xl mx-auto px-5">
           <div className="flex gap-10 items-center py-10 ssm:flex-col">
             <h1 className="text-secondary text-3xl font-semibold">Projects</h1>
             <div className="w-60 h-[1px] bg-tertiary"></div>
+            <h6> Choose a project from here :</h6>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project) => (
@@ -97,9 +80,7 @@ function ProjectDisplay() {
                 <h3 className="text-primary text-xl font-semibold mb-2">
                   {project.title}
                 </h3>
-                <p className="text-secondary text-sm mb-4">
-                  {project.description}
-                </p>
+                <p className="text-secondary text-sm mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech, index) => (
                     <span
@@ -150,9 +131,7 @@ function ProjectDisplay() {
         {/* Screenshots Section */}
         <section className="bg-primary py-10">
           <div className="flex gap-10 items-center py-10 ssm:flex-col">
-            <h1 className="text-secondary text-3xl font-semibold">
-              Screenshots
-            </h1>
+            <h1 className="text-secondary text-3xl font-semibold">Screenshots</h1>
             <div className="w-60 h-[1px] bg-tertiary"></div>
           </div>
           <div className="flex flex-col items-center">
@@ -178,31 +157,6 @@ function ProjectDisplay() {
                 />
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Demo Video Section */}
-        <section className="bg-primary py-10 min-h-[90vh] flex flex-col items-center">
-          <div className="max-w-4xl w-full px-5 text-center">
-            <div className="flex gap-10 items-center py-10 ssm:flex-col">
-              <h1 className="text-secondary text-3xl font-semibold">
-                Demo Video
-              </h1>
-              <div className="w-60 h-[1px] bg-tertiary"></div>
-            </div>
-            <div className="bg-white h-[25rem] rounded-lg shadow-lg flex items-center justify-center">
-              <span className="text-primary text-lg">
-                Demo Video Placeholder
-              </span>
-            </div>
-          </div>
-          <div className="mt-10 max-w-3xl w-full px-5">
-            <h2 className="text-2xl text-white font-semibold mb-4">
-              Description:
-            </h2>
-            <p className="text-white text-base leading-relaxed">
-              {selectedProject.description}
-            </p>
           </div>
         </section>
 
