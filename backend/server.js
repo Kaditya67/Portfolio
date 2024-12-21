@@ -8,7 +8,13 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // Middlewares
-app.use(cors()); 
+const corsOptions = {
+    origin: process.env.FRONTEND_URL || 'https://portfolio-4r81.vercel.app',
+    optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+console.log(process.env.FRONTEND_URL)
 app.use(express.json());
 
 // imports
