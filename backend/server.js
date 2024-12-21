@@ -9,11 +9,11 @@ dotenv.config();
 
 // Middlewares
 const corsOptions = {
-    origin: process.env.FRONTEND_URL || 'https://portfolio-4r81.vercel.app',
-    optionsSuccessStatus: 200,
+    origin: "https://portfolio-4r81.vercel.app", 
+    optionsSuccessStatus: 200, // For legacy browser support
 };
 
-app.use(cors());
+app.use(cors(corsOptions));
 console.log(process.env.FRONTEND_URL)
 app.use(express.json());
 
