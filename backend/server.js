@@ -8,14 +8,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // Middlewares
-const corsOptions = {
-    origin: "*", // Use "*" for all origins or specify your frontend URL here
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials:true
-};
 console.log("Server file running")
-app.use(cors(corsOptions));
+app.use(cors());
 console.log(process.env.FRONTEND_URL)
 app.use(express.json());
 
