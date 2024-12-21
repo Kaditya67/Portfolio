@@ -3,15 +3,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "server.js", 
-      "use": "@vercel/node"
+      "src": "server.js",  // The backend entry point
+      "use": "@vercel/node" // This tells Vercel to use Node.js for the backend
     },
     {
-      "src": "src/**/*",
-      "use": "@vercel/static"
+      "src": "src/**/*",  // All static files in the 'src' directory
+      "use": "@vercel/static" // Static file handler
     }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/" }
+    {
+      "src": "/api/(.*)",  // API routes will start with /api
+      "dest": "server.js"  // Direct all API requests to server.js
+    },
+    {
+      "src": "/(.*)",  // All other routes will be served as static files
+      "dest": "/src/$1"
+    }
   ]
 }
