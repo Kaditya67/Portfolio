@@ -13,7 +13,7 @@ const corsOptions = {
     optionsSuccessStatus: 200,
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 console.log(process.env.FRONTEND_URL)
 app.use(express.json());
 
