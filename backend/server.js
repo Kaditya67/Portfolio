@@ -9,7 +9,11 @@ dotenv.config();
 
 // Middlewares
 console.log("Server file running")
-app.use(cors());
+const corsOptions = {
+    origin:"https://portfolio-4r81.vercel.app",
+    credentials:true
+}
+app.use(cors(corsOptions));
 console.log(process.env.FRONTEND_URL)
 app.use(express.json());
 
