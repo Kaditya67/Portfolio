@@ -9,8 +9,9 @@ dotenv.config();
 
 // Middlewares
 const corsOptions = {
-    origin: "https://portfolio-4r81.vercel.app", 
-    optionsSuccessStatus: 200, // For legacy browser support
+    origin: "*", // Use "*" for all origins or specify your frontend URL here
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 app.use(cors(corsOptions));
