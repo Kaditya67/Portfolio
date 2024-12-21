@@ -12,6 +12,7 @@ const corsOptions = {
     origin: "*", // Use "*" for all origins or specify your frontend URL here
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials:true
 };
 
 app.use(cors(corsOptions));
