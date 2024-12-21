@@ -14,7 +14,7 @@ const corsOptions = {
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials:true
 };
-
+console.log("Server file running")
 app.use(cors(corsOptions));
 console.log(process.env.FRONTEND_URL)
 app.use(express.json());
