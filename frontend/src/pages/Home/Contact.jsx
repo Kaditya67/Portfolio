@@ -7,7 +7,7 @@ function Contact() {
         gender: "male",
         age: 21,
         mobile: 7033529453,
-        email: "ojhaadity913@gmailcom",
+        email: "ojhaadity913@gmail.com",
         country: "India",
     };
 
