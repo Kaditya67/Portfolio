@@ -12,7 +12,7 @@ function Project() {
         // Fetch the projects (if you're fetching dynamically)
         const fetchProjects = async () => {
             try {
-                const response = await axios.get('/api/projects');
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/projects`);
                 setProjects(response.data);
                 setSelectedItem(response.data[0]?._id); // Set the first project as the default selected item
                 setLoading(false);

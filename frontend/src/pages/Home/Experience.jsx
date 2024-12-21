@@ -10,7 +10,7 @@ function Experience() {
     useEffect(() => {
         const fetchExperiences = async () => {
             try {
-                const response = await axios.get('/api/experiences');
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/experiences`);
                 setExperiences(response.data);
                 setSelectedItem(response.data[0]._id); // Set the first item as the default selected item
                 setLoading(false);

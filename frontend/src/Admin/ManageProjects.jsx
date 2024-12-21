@@ -18,7 +18,7 @@ function ManageProjects() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('/api/projects');
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/projects`);
         setProjects(response.data);
         setMessage('Projects loaded successfully.');
       } catch (err) {
@@ -36,8 +36,8 @@ function ManageProjects() {
 
   const handleAddProject = async () => {
     try {
-      await axios.post('/api/projects', newProject);
-      const response = await axios.get('/api/projects/');
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/projects`, newProject);
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/projects/`);
       setProjects(response.data);
       setNewProject({
         title: '',
@@ -56,8 +56,8 @@ function ManageProjects() {
 
   const handleUpdateProject = async () => {
     try {
-      await axios.put(`/api/projects/${editingProject._id}`, editingProject);
-      const response = await axios.get('/api/projects/');
+      await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/projects/${editingProject._id}`, editingProject);
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/projects/`);
       setProjects(response.data);
       setEditingProject(null);
       setMessage('Project updated successfully.');
@@ -69,7 +69,7 @@ function ManageProjects() {
 
   const handleDeleteProject = async (id) => {
     try {
-      await axios.delete(`/api/projects/${id}`);
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/projects/${id}`);
       setProjects((prevProjects) => prevProjects.filter((proj) => proj._id !== id));
       setMessage('Project deleted successfully.');
     } catch (err) {

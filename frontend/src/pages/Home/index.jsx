@@ -18,7 +18,7 @@ export default function Home({projects,setProjects}) {
         <Intro />
         <About />
         <Experience />
-        <Project projects={projects} setProjects={setProjects} />
+        <Project/>
         <Contact />
         <Footer />
       </div>

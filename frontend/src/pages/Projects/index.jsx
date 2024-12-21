@@ -15,7 +15,7 @@ function ProjectDisplay() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get("/api/projects"); // Adjust API URL accordingly
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/projects`); // Adjust API URL accordingly
         setProjects(response.data);
         setSelectedProject(response.data[0]); // Set the first project as the default
         setActiveImage(response.data[0]?.images[0]); // Set the first image as the active image

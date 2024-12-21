@@ -22,7 +22,7 @@ const Login = () => {
     const password = e.target.password.value;
 
     try {
-      const response = await axios.post('http://localhost:5000/api/users/login', { email, password });
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/users/login`, { email, password });
 
       // Assuming the backend responds with a token and user details
       const { token, user } = response.data;

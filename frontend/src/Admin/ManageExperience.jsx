@@ -16,7 +16,7 @@ function ManageExperience() {
   useEffect(() => {
     const fetchExperiences = async () => {
       try {
-        const response = await axios.get('/api/experiences');
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/experiences`);
         setExperiences(response.data);
         setMessage('Experiences loaded successfully.');
       } catch (err) {
@@ -34,8 +34,8 @@ function ManageExperience() {
 
   const handleAddExperience = async () => {
     try {
-      const createResponse = await axios.post('/api/experiences', newExperience);
-      const response = await axios.get(`/api/experiences/${createResponse.data.experience._id}`);
+      const createResponse = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/experiences`, newExperience);
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/experiences/${createResponse.data.experience._id}`);
       setExperiences([...experiences, response.data]);
       setNewExperience({ company: '', title: '', period: '', description: '' });
       setMessage('Experience added successfully.');
@@ -47,8 +47,8 @@ function ManageExperience() {
 
   const handleUpdateExperience = async () => {
     try {
-      await axios.put(`/api/experiences/${editingExperience._id}`, editingExperience);
-      const response = await axios.get(`/api/experiences/${editingExperience._id}`);
+      await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/experiences/${editingExperience._id}`, editingExperience);
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/experiences/${editingExperience._id}`);
       const updatedExperience = response.data;
       setExperiences(
         experiences.map((exp) =>
@@ -65,7 +65,7 @@ function ManageExperience() {
 
   const handleDeleteExperience = async (id) => {
     try {
-      await axios.delete(`/api/experiences/${id}`);
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/experiences/${id}`);
       setExperiences(experiences.filter((exp) => exp._id !== id));
       setMessage('Experience deleted successfully.');
     } catch (err) {
